@@ -1,0 +1,51 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+int RandomNumber(int From, int To)
+{
+    int Random = rand() % (To - From + 1) + From;
+    return Random;
+}
+void FillArrayWithRandomNumbers(int& arrLength, int arr[])
+{
+    cout << "please enter number of element :" << endl;
+    cin >> arrLength;
+    for (int i = 0; i < arrLength; i++)
+    {
+        arr[i] = RandomNumber(1, 100);
+    }
+}
+int MinNumberInArray(int arrLength, int arr[100])
+{
+    int Min = 0;
+    Min = arr[0];
+
+    for (int i = 0; i < arrLength; i++)
+    {
+        if (arr[i] < Min)
+        {
+            Min = arr[i];
+        }
+    }
+    return Min;
+}
+void PrintArray(int arrLength, int arr[])
+{
+    for (int i = 0; i < arrLength; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+int main()
+{
+    srand((unsigned)time(NULL));
+    int arr[100], arrLength;
+    FillArrayWithRandomNumbers(arrLength, arr);
+    cout << "\nArray Elements: ";
+    PrintArray(arrLength, arr);
+    cout << "\n Min Number is : ";
+    cout << MinNumberInArray(arrLength, arr) << endl;
+    return 0;
+
+}
