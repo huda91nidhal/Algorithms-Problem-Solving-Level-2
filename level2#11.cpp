@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+int readpositivenumber(string message)
+{
+    int number;
+    do
+    {
+        cout << message << endl;
+        cin >> number;
+    } while (number <= 0);
+    return number;
+}
+int revercenumber(int number)
+{
+    int remainder = 0; int number2 = 0;
+    while (number > 0)
+    {
+        remainder = number % 10;
+        number = number / 10;
+        number2 = number2 * 10 + remainder;
+    }
+    return number2;
+}
+bool ispalindromenumber(int number)
+{
+    return number == revercenumber(number);
+}
+int main()
+{
+    if (ispalindromenumber(readpositivenumber("Please enter a positive number ")))
+        cout << "\n yes , The number is palindrome number \n ";
+    else
+        cout << "\n no , The number is not palindrome number \n ";
+    return 0;
+}
